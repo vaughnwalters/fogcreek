@@ -4,31 +4,30 @@ let sortString = 'uwlcnfcejefjudkmylhmmpjfkmhveozojepfvgboboxknkfdoghkvzxrkamhag
 
 let alphabet = 'abcdefghijklmnopqrstuvwxyz_'
 alphabet = alphabet.split('');
-
-for (var i = 0; i < alphabet.length; i++) {
-
-  var letter = alphabet[i];
-  var regex = new RegExp( letter, 'g' );
-  console.log(alphabet[i], sortString.match(regex).length);
+let sortArr = []
+let letterArray = [];
 
 
-}
+for (let i = 0; i < alphabet.length; i++) {
+  let letter = alphabet[i];
+  let regex = new RegExp( letter, 'g' );
+  let letterObj = {
+    letter: alphabet[i],
+    number: sortString.match(regex).length
+  };
+  sortArr.push(letterObj);
+};
 
+sortArr.sort(function(a, b) {
+    return parseFloat(b.number) - parseFloat(a.number);
+});
 
-// var counter = 0;
+for (let i = 0; i < sortArr.length; i++) {
+  letterArray.push(sortArr[i].letter);
+};
 
-//   for (var i = 0; i < alphabet.length; i++) {
-//     // console.log("i", i);
-//       var charIndex = alphabet.indexOf('a', i);
+let word = letterArray.join('');
+let chopChop = word.indexOf('_');
+let woohoo = word.slice(0, chopChop);
 
-//       if (charIndex > -1) {
-//           counter++;
-//           i = charIndex;
-//           console.log("i", i);
-//       }
-//     }
-
-
-
-  // console.log(count);
-
+console.log(woohoo);
